@@ -1,0 +1,4 @@
+apiVersion: v1
+description: wordpress helm chart
+name: wordpress app
+version: 0.1.0
