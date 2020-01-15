@@ -16,3 +16,5 @@ https://kubernetes.io/docs/tutorials/stateful-application/cassandra/
 
 ## 참고
 https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes?hl=ko
+
+https://github.com/nginxinc/kubernetes-ingress/tree/master/examples
