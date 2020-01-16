@@ -4,11 +4,9 @@ metadata:
   name: {{ .Values.module.wordpress.svc.name }}
   labels:
     app: wordpress
-    # {{- include "p2-wordpress-ingress-helm.labels" . | nindent 4 }}
 spec:
   ports:
     - port: {{ .Values.module.wordpress.svc.port }}
   selector:
     app: wordpress
     tier: frontend
-    # {{- include "p2-wordpress-ingress-helm.selectorLabels" . | nindent 4 }}

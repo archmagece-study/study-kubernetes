@@ -23,6 +23,6 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: wordpress-svc
-          servicePort: 80
+          serviceName: {{ .Values.module.wordpress.svc.name }}
+          servicePort: {{ .Values.module.wordpress.svc.port }}
 {{- end }}

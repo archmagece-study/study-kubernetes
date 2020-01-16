@@ -2,15 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mysql-svc
-  # name: {{ .Values.module.mysql.svc.name }}
   labels:
     app: wordpress
-    # {{- include "p2-wordpress-ingress-helm.labels" . | nindent 4 }}
 spec:
   ports:
     - port: {{ .Values.module.mysql.svc.port }}
   selector:
     app: wordpress
     tier: mysql
-    # {{- include "p2-wordpress-ingress-helm.selectorLabels" . | nindent 4 }}
   clusterIP: None

@@ -5,7 +5,6 @@ metadata:
   name: mysql-pv-claim
   labels:
     app: wordpress
-    # {{- include "p2-wordpress-ingress-helm.labels" . | nindent 4 }}
 spec:
   accessModes:
     - ReadWriteOnce
@@ -38,10 +37,6 @@ spec:
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: {{ .Values.module.mysql.deploy.password }}
-          # valueFrom:
-          #   secretKeyRef:
-          #     name: mysql-pass
-          #     key: password
         ports:
         - containerPort: 3306
           name: mysql
