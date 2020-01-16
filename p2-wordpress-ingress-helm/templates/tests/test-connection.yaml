@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args:  ['{{ include "p2-wordpress-ingress-helm.fullname" . }}:{{ .Values.service.port }}']
+      args:  ['{{ include "p2-wordpress-ingress-helm.fullname" . }}:{{ .Values.module.wordpress.svc.port }}']
   restartPolicy: Never

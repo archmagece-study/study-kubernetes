@@ -9,8 +9,8 @@ image:
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: "wp-chart"
+fullnameOverride: "wp-chart"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -30,9 +30,9 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
-service:
-  type: ClusterIP
-  port: 80
+labels:
+  app: wordpress
+  release: canary
 
 ingress:
   enabled: true
@@ -42,15 +42,12 @@ ingress:
     ingress.kubernetes.io/ssl-redirect: "false"
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
-  paths:
-    - /
-  hosts:
-    - host: test1.com
-      serviceName: wordpress-svc
-      servicePort: 80
   tls: []
   #  - secretName: chart-example-tls
-  #    hosts:
+  hosts:
+    host: test1.com
+  paths:
+    path: /
   #      - chart-example.local
 
 resources: {}
@@ -70,3 +67,32 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+service:
+  type: ClusterIP
+  port: 80
+module:
+  wordpress:
+    svc:
+      port: 80
+      type: ClusterIP
+      name: wordpress-svc
+    pvc:
+      name: wordpress-pv-claim
+      storageSize: 1Gi
+      accessMode: ReadWriteOnce
+    deploy:
+      jjj: jjj
+  mysql:
+    svc:
+      name: mysql-svc
+      port: 3306
+    pvc:
+      name: mysql-pv-claim
+      storageSize: 20Gi
+      accessMode: ReadWriteOnce
+    deploy:
+      name: mysql-deploy
+      password: passw0rd
+
+
