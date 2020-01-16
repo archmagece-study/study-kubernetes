@@ -11,11 +11,10 @@ spec:
   #   serviceName: wordpress-svc
   #   servicePort: 80
   rules:
-  # - host: test1.com
-    # http:
-  - http:
+  - host: test1.com
+    http:
       paths:
       - path: /
         backend:
-          serviceName: wordpress
+          serviceName: wordpress-svc
           servicePort: 80
